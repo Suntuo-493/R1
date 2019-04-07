@@ -1,22 +1,10 @@
-# Copyright 2015 The TensorFlow Authors. All Rights Reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ==============================================================================
-
-"""A very simple MNIST classifier.
-See extensive documentation at
-https://www.tensorflow.org/get_started/mnist/beginners
-"""
+#################################################################
+# 2019-4-5 12:11:15
+# the following code is from
+# http://www.tensorfly.cn/tfdoc/tutorials/mnist_pros.html
+# it generate and save the model made of tensorflow
+# it is saved in the ./save
+##################################################################
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -94,14 +82,15 @@ saver = tf.train.Saver() #定义saver
 
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
-    for i in range(1000):
+    for i in range(1000):   # for a more accuracy success rate, the number can be 20000 and the rate will be 99.5%
         batch = mnist.train.next_batch(50)
         if i % 100 == 0:
             train_accuracy = accuracy.eval(feed_dict={
                 x: batch[0], y_: batch[1], keep_prob: 1.0})
             print('step %d, training accuracy %g' % (i, train_accuracy))
         train_step.run(feed_dict={x: batch[0], y_: batch[1], keep_prob: 0.5})
-    saver.save(sess, './SAVE/model.ckpt') #模型储存位置
-
+    # the location of the model
+    saver.save(sess, './SAVE/model.ckpt') 
+    # test the model from Mnist test set
     print('test accuracy %g' % accuracy.eval(feed_dict={
         x: mnist.test.images, y_: mnist.test.labels, keep_prob: 1.0}))
