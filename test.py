@@ -1,8 +1,12 @@
-﻿from PIL import Image, ImageFilter
-import tensorflow as tf
-import matplotlib.pyplot as plt
-
-
+#############################################
+#  Created by Suntuo
+#  2019-4-5 22:03
+#  This code is a test of the basic component
+#  of the model, which is used to get the 
+#  image from localdisk, and use the model to
+#  distinguish it.
+#
+#############################################
 from PIL import Image
 import flask
 import tensorflow as tf
@@ -14,10 +18,10 @@ sess = tf.InteractiveSession()
 
 
 def image_prepare(image):
-    # image = Image.open('C:/Users/suntuo/Desktop/mnistoutput/5.png')  # Testing without docker
+    # image = Image.open('C:/Users/suntuo/Desktop/mnistoutput/5.png')  # Abandoned
 
     image = image.resize((28, 28))
-    plt.imshow(image)  # 显示需要识别的图片
+    # plt.imshow(image)  # plot the image
     # plt.show()
     image = image.convert('L')
     tv = list(image.getdata())
@@ -43,7 +47,7 @@ def max_pool_2x2(x):
     return tf.nn.max_pool(x, ksize=[1,2,2,1], strides=[1,2,2,1], padding='SAME')
 
 
-
+# use the model
 def model(result):
     x = tf.placeholder(tf.float32, [None, 784])
     y_ = tf.placeholder(tf.float32, [None, 10])
@@ -84,7 +88,7 @@ def model(result):
     saver = tf.train.Saver()
 
     sess.run(tf.global_variables_initializer())
-    saver.restore(sess, "./SAVE/model.ckpt")  # 使用模型，参数和之前的代码保持一致
+    saver.restore(sess, "./SAVE/model.ckpt")  # use the model generated from grneratemodel.py
 
     prediction = tf.argmax(y_conv, 1)
     predint = prediction.eval(feed_dict={x:[result], keep_prob:1.0}, session=sess)
