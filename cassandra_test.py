@@ -1,12 +1,14 @@
-##############################################
-#  
-#
-#
-#
-#
-#
-#
-##############################################
+###################################################
+#  Created by Suntuo
+#  2019-4-7 04:31
+#  This code is a test of a basic component of 
+#  the project, which is used to upload information
+#  to the cassandra database.
+#  Both of them are in the docker.
+#  The cassandra is in http://172.17.0.2
+#  port:9042
+#  use the --link name_of_container:name_of_link
+##################################################
 from cassandra.cluster import Cluster
 from cassandra.query import SimpleStatement
 import datetime
@@ -16,7 +18,7 @@ predictresult = 4
 image_arr = [2, 7, 3, 5, 1, 3, 1, 1, 1, 2, 3, 4, 4, 5, 3, 4, 4, 4, 3, 1, 2, 3]
 image_info= ','.join(str(i) for i in image_arr)
 
-
+#connnect to the cassandra
 cluster = Cluster(contact_points=['127.0.0.1'],port=9042)
 session = cluster.connect()
 mnist_result_value = predictresult
