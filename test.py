@@ -17,6 +17,8 @@ model = None
 sess = tf.InteractiveSession()
 
 
+#input the image and change it into array.
+#1 means pure black 0 means pure white
 def image_prepare(image):
     # image = Image.open('C:/Users/suntuo/Desktop/mnistoutput/5.png')  # Abandoned
 
@@ -25,10 +27,10 @@ def image_prepare(image):
     # plt.show()
     image = image.convert('L')
     tv = list(image.getdata())
-    tva = [(255-x) * 1.0 / 255.0 for x in tv]
-    return tva
+    tva = [(255-x) * 1.0 / 255.0 for x in tv]  # normalization
+    return tva                                 # return the array
 
-
+# the CNN components for mnist is mentioned above
 def weight_variable(shape):
     initial = tf.truncated_normal(shape,stddev = 0.1)
     return tf.Variable(initial)
@@ -94,7 +96,8 @@ def model(result):
     predint = prediction.eval(feed_dict={x:[result], keep_prob:1.0}, session=sess)
     return predint
 
-
+# load the image
+# this part will be changed into flask in docker
 image = Image.open('C:/Users/suntuo/Desktop/mnistoutput/5.png') #Testing without docker
 result = image_prepare(image)
 predint = model(result)
