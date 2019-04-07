@@ -2,7 +2,7 @@
 #  Created by Suntuo
 #  2019-4-5 22:03
 #  This code is a test of the basic component
-#  of the model, which is used to get the 
+#  of the project, which is used to get the 
 #  image from localdisk, and use the model to
 #  distinguish it.
 #
