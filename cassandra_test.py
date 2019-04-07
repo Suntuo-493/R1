@@ -1,3 +1,12 @@
+##############################################
+#  
+#
+#
+#
+#
+#
+#
+##############################################
 from cassandra.cluster import Cluster
 from cassandra.query import SimpleStatement
 import datetime
