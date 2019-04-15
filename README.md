@@ -37,6 +37,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 d82f65802166        mnist-app           "python app.py"     About an hour ago   Up About an hour          0.0.0.0:9042->9042/tcp   apple_tree
 ```
 <br>
+
 Set the Cassandra
 ----
 Pull the cassandra image from the docker server.<br>
@@ -52,6 +53,7 @@ And then, deploy activitate cassandra container from the image.<br>
 sudo docker run -d --name "some-cassandra" -d -e cassandra:3.11.2
 ```
 <br>
+
 Link the container
 -----
 Use the link function to create one-way link from application to Database.<br>
@@ -60,6 +62,7 @@ Use the link function to create one-way link from application to Database.<br>
 sudo docker run -d -p --name some-cassandra --link some-cassandra:linkname mnist_app:latest /bin/bash
 ```
 <br>
+
 Upload the graph
 ------
 From a terminal, load the  filefolder with the graph willing to recognize.<br>
