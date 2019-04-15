@@ -41,11 +41,13 @@ Set the Cassandra
 ----
 Pull the cassandra image from the docker server.<br>
 For example, we can pull cassandra version 3.11.2<br>
+
 ```Bash
 sudo docker pull cassandra:3.11.2
 ```
 <br>
 And then, deploy activitate cassandra container from the image.<br>
+
 ```Bash
 sudo docker run -d --name "some-cassandra" -d -e cassandra:3.11.2
 ```
@@ -53,6 +55,7 @@ sudo docker run -d --name "some-cassandra" -d -e cassandra:3.11.2
 Link the container
 -----
 Use the link function to create one-way link from application to Database.<br>
+
 ```Bash
 sudo docker run -d -p --name some-cassandra --link some-cassandra:linkname mnist_app:latest /bin/bash
 ```
@@ -60,7 +63,8 @@ sudo docker run -d -p --name some-cassandra --link some-cassandra:linkname mnist
 Upload the graph
 ------
 From a terminal, load the  filefolder with the graph willing to recognize.<br>
-Use the following to submit the graph.
+Use the following to submit the graph.<br>
+
 ```Bash
 use curl -X post -F @image=image_name.png "http://127.0.0.1:5000/predict
 ```
