@@ -25,10 +25,12 @@ sudo docker run -d -p 9042:9042 mnist-app
 ```
 <br>
 Check the container by<br>
+
 ```bash
 sudo docker ps -a
 ```
 <br>
+
 ```bash
 [gustafcavanaugh@instance-3 ~]$ sudo docker ps -a
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                    PORTS                    NAMES
