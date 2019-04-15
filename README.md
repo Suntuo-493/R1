@@ -62,6 +62,8 @@ Use the link function to create one-way link from application to Database.<br>
 sudo docker run -d -p --name some-cassandra --link some-cassandra:linkname mnist_app:latest /bin/bash
 ```
 <br>
+And then we enter the mnist container, use ping command to check the connection. We can found they connection successfully.<br>
+However, in Cassandra container, it will be failed. Because the link is one-way.<br>
 
 Upload the graph
 ------
