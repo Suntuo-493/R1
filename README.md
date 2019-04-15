@@ -19,6 +19,7 @@ sudo docker build -t mnist-app:latest .
 <br>
 Second,run the Docker container<br>
 We can run our docker container for testing<br>
+
 ```Bash
 sudo docker run -d -p 9042:9042 mnist-app
 ```
