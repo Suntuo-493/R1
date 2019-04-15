@@ -76,7 +76,13 @@ use curl -X post -F @image=image_name.png "http://127.0.0.1:5000/predict
 And we will get the result of recongnization.<br>
 And in the cassandra container <br>
 ```bash
-```cqlsh> use mykeyspace
-```cqlsh> SELECT * FROM image_num
+```cqlsh: use mykeyspace;
+```cqlsh:mykeyspace> SELECT * FROM image_num;
+
+image_num      | date                | mnist_result
+---------------+---------------------+--------------
+20190410130802 | 2019-04-10 13:08:02 |            4
+20190410132058 | 2019-04-10 13:20:58 |            6
+20190415140809 | 2019-04-15 14:08:09 |            3
 ```
 Then we can find the data of this testing<br>
