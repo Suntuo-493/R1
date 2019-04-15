@@ -73,5 +73,10 @@ Use the following to submit the graph.<br>
 ```Bash
 use curl -X post -F @image=image_name.png "http://127.0.0.1:5000/predict
 ```
-And we will get the result of recongnization.
-
+And we will get the result of recongnization.<br>
+And in the cassandra container <br>
+```bash
+```cqlsh> use mykeyspace
+```cqlsh> SELECT * FROM image_num
+```
+Then we can find the data of this testing<br>
